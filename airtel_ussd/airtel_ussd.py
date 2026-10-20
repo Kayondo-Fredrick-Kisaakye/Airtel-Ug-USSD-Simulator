@@ -38,11 +38,14 @@ users = {
     },
 }
 
-first_name = users["0750251439"]["personal_info"]["first_name"]
-second_name = users["0750251439"]["personal_info"]["second_name"]
-puk = users["0750251439"]["airtel_acc_info"]["puk"]
-phone_number = users["0750251439"]["airtel_acc_info"]["phone_number"]
-pin = users["0750251439"]["airtel_acc_info"]["pin"]
+user_info = users["0750251439"]
+
+
+first_name = user_info["personal_info"]["first_name"]
+second_name = user_info["personal_info"]["second_name"]
+puk = user_info["airtel_acc_info"]["puk"]
+phone_number = user_info["airtel_acc_info"]["phone_number"]
+pin = user_info["airtel_acc_info"]["pin"]
 
 thank_part = "Thank you for subscribing to Airtel services"
 invalid_input_msg = "Woops! Invalid Input"
@@ -111,7 +114,7 @@ if choice == "0":
                     sys.exit()
 
                 # 2. CHECK THE SAVED PIN FROM DICT user_ifno
-                elif pin != user_info["saved_pin"]:
+                elif pin != user_info["pin"]:
                     print("Wrong PIN! Try again.")
                     sys.exit()
 
