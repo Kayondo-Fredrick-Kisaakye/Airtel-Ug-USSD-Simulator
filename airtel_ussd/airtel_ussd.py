@@ -1,3 +1,5 @@
+import sys
+
 print("=================================================")
 print("\tWELCOME TO AIRTEL UGANDA USSD")
 print("Subsscribe to our services | Pay bills and more")
@@ -41,7 +43,7 @@ if start_code == "*100#":
 
 if start_code != "*100#":
     print("Invalid Input (USE *100#)")
-    exit()
+    sys.exit()
 
 choice = input("Enter Choice: ")
 ##################################
@@ -78,12 +80,12 @@ if choice == "0":
                 # 1. WE CHECK THE LENGTH OF PIN FIRST
                 if len(pin) != 4 or not pin.isdigit():
                     print("Invalid PIN! Must be 4 digits.")
-                    exit()
+                    sys.exit()
 
                 # 2. CHECK THE SAVED PIN FROM DICT user_ifno
                 elif pin != user_info['saved_pin']:
                     print("Wrong PIN! Try again.")
-                    exit()
+                    sys.exit()
 
                 # 3. CHECK THE BALANCE
                 else:
@@ -121,7 +123,7 @@ if choice == "0":
                 # WE CHECK THE LENGTH OF PIN FIRST
                 if len(pin) != 4 or not pin.isdigit():
                     print("Invalid PIN! Must be 4 digits.")
-                    exit()
+                    sys.exit()
                 else:
                     print(f"SUCCESS! {thank_part}, You have subscribed!")
 
@@ -149,7 +151,7 @@ if choice == "0":
                 #WE CHECK THE LENTH OF THE PIN FIRST
                 if len(pin) != 4 or not pin.isdigit():
                     print("Invalid PIN! Must be 4 digits.")
-                    exit()
+                    sys.exit()
                 else:
                     print(f"SUCCESS! {thank_part}, You have subscribed!")
             elif sub_2 == "2":
@@ -158,7 +160,7 @@ if choice == "0":
             elif sub_2 == "3":
                 print("AIRTIME-AUTORENEWAL\n")
                 print(f"SUCCESS, {thank_part}, You have subscribed and we shall autorenew once done or expired.")
-        elif sub_1 == "2":
+        elif sub_1 == "2" or sub_1 == "3":
             print("PAYMENT METHOD\n" \
             "1. AirtelMoney\n" \
             "2. Airtime-Onetime\n" \
@@ -170,7 +172,7 @@ if choice == "0":
                 #WE CHECK THE LENTH OF PIN FIRST AGAIN
                 if len(pin) != 4 or not pin.isdigit():
                     print("Invalid PIN! Must be 4 digits.")
-                    exit()
+                    sys.exit()
                 else:
                     print(f"SUCCESS! {thank_part}, You have subscribed!")
             elif sub_2 == "2":
@@ -191,7 +193,7 @@ if choice == "0":
                 #CHECK THE PIN LENTH
                 if len(pin) != 4 or not pin.isdigit():
                     print("Invalid PIN! Must be 4 digits.")
-                    exit()
+                    sys.exit()
                 else:
                     print(f"SUCCESS! {thank_part}, You have subscribed.")
             elif sub_2 == "2":
@@ -226,7 +228,7 @@ if choice == "0":
                 #CHECK PIN LENGTH
                 if len(pin) != 4 or not pin.isdigit():
                     print("Invalid PIN! Must be 4 digits.")
-                    exit()
+                    sys.exit()
                 else:
                     print(f"SUCCESS! {thank_part}, You have subscribed!")
             elif sub_2 == "2":
@@ -243,7 +245,7 @@ if choice == "0":
                 #CHECK PIN LENGTH
                 if len(pin) != 4 or not pin.isdigit():
                     print("Invalid PIN! Must be 4 digits.")
-                    exit()
+                    sys.exit()
                 else:
                     print(f"SUCCESS! {thank_part}, You have subscribed.")
             elif sub_2 == "2":
@@ -311,29 +313,6 @@ if choice == "0":
             elif sub_2 == "3":
                 print("BEERAKO\n" \
                 "Standby as we chech your account details...")
-        elif sub_1 == "3":
-            print("CHOOSE PAYMENT METHOD\n" \
-            "1. Airtel Money\n" \
-            "2. Airtime\n" \
-            "3. Beerako\n" \
-            "*. Back\n" \
-            "#. Home\n")                       # rememer to add * and #
-            sub_2 = input("SELECT: ")
-            if sub_2 == "1":
-                print("AIRTEL MONEY\n")
-                pin = input("ENTER PIN: ")
-                #pin length
-                if len(pin) != 4 or not pin.isdigit():
-                    print("Invalid PIN! Must be 4 digits")
-                else:
-                    print(f"SUCCESS, {thank_part}, You have subscribed.")
-            elif sub_2 == "2":
-                print("AIRTIME\n")
-                print(f"SUCCESS! {thank_part}, You have subscribed.")
-            elif sub_2 == "3":
-                print("BEERAKO\n" \
-                "Standby as we chech your account details...")
-
     # #################################
     #  start of VOICE/SMS
     # #################################
@@ -376,95 +355,7 @@ elif choice == "1":
             "*. Back\n" \
             "#. Home\n")
             sub_3 = input("SELECT: ")
-            if sub_3 == "1":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home")
-                sub_4 = input("SELECT: ")
-                if sub_4 == "1":
-                    print("AIRTEL MONEY\n")
-                    pin = input("ENTER PIN: ")
-                    #PIN LENGTH
-                    if len(pin) != 4 or pin.isdigit():
-                        print("Invalid PIN! Must be 4 digits.")
-                    else:
-                        print(f"SUCCESS! {thank_part}, You have subscribed.")
-                elif sub_4 == "2":
-                    print("AIRTIME\n")
-                    print(f"SUCCESS! {thank_part}, You have subscibed.")
-                elif sub_4 == "3":
-                    print("BEERAKO\n")
-                    print("Standby as we check your account details...")
-            elif sub_3 == "2":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home")
-                sub_4 = input("SELECT: ")
-                if sub_4 == "1":
-                    print("AIRTEL MONEY\n")
-                    pin = input("ENTER PIN: ")
-                    #PIN LENGTH
-                    if len(pin) != 4 or pin.isdigit():
-                        print("Invalid PIN! Must be 4 digits.")
-                    else:
-                        print(f"SUCCESS! {thank_part}, You have subscribed.")
-                elif sub_4 == "2":
-                    print("AIRTIME\n")
-                    print(f"SUCCESS! {thank_part}, You have subscibed.")
-                elif sub_4 == "3":
-                    print("BEERAKO\n")
-                    print("Standby as we check your account details...")
-            elif sub_3 == "3":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home")
-                sub_4 = input("SELECT: ")
-                if sub_4 == "1":
-                    print("AIRTEL MONEY\n")
-                    pin = input("ENTER PIN: ")
-                    #PIN LENGTH
-                    if len(pin) != 4 or pin.isdigit():
-                        print("Invalid PIN! Must be 4 digits.")
-                    else:
-                        print(f"SUCCESS! {thank_part}, You have subscribed.")
-                elif sub_4 == "2":
-                    print("AIRTIME\n")
-                    print(f"SUCCESS! {thank_part}, You have subscibed.")
-                elif sub_4 == "3":
-                    print("BEERAKO\n")
-                    print("Standby as we check your account details...")
-            elif sub_3 == "4":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home")
-                sub_4 = input("SELECT: ")
-                if sub_4 == "1":
-                    print("AIRTEL MONEY\n")
-                    pin = input("ENTER PIN: ")
-                    #PIN LENGTH
-                    if len(pin) != 4 or pin.isdigit():
-                        print("Invalid PIN! Must be 4 digits.")
-                    else:
-                        print(f"SUCCESS! {thank_part}, You have subscribed.")
-                elif sub_4 == "2":
-                    print("AIRTIME\n")
-                    print(f"SUCCESS! {thank_part}, You have subscibed.")
-                elif sub_4 == "3":
-                    print("BEERAKO\n")
-                    print("Standby as we check your account details...")
-            elif sub_3 == "5":
+            if sub_3 in ("1", "2", "3", "4", "5"):
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
@@ -501,42 +392,7 @@ elif choice == "1":
             "n. Next" \
             "*. Back")
             sub_3 = input("SELECT: ")
-            if sub_3 == "1":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "2":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 =="3":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "4":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "5":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "6":
+            if sub_3 in ("1", "2", "3", "4", "5", "6"):
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
@@ -558,42 +414,20 @@ elif choice == "1":
             "n. Next\n" \
             "*. Back\n")
             sub_3 = input("SELECT: ")
-            if sub_3 == "1":
+            if sub_3 in ("1", "2", "3"):
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
                 "3. Beerako\n" \
                 "*. Back\n" \
                 "#. Home\n")
-            elif sub_3 == "2":
+            elif sub_3 in ("4", "5", "6"):
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
                 "3. Beerako\n" \
                 "*. Back\n" \
                 "#. Home\n")
-            elif sub_3 =="3":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "4":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "5":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "6":
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
@@ -614,35 +448,19 @@ elif choice == "1":
             "n. Next\n" \
             "*. Back\n")
             sub_3 = input("SELECT: ")
-            if sub_3 == "1":
+            if sub_3 in ("1", "2", "3", "4", "5"):
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
                 "3. Beerako\n" \
                 "*. Back\n" \
                 "#. Home\n")
-            elif sub_3 == "2":
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
                 "3. Beerako\n" \
                 "*. Back\n" \
                 "#. Home\n")
-            elif sub_3 =="3":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "4":
-                print("CHOOSE PAYMENT METHOD\n" \
-                "1. Airtel Money\n" \
-                "2. Airtime\n" \
-                "3. Beerako\n" \
-                "*. Back\n" \
-                "#. Home\n")
-            elif sub_3 == "5":
                 print("CHOOSE PAYMENT METHOD\n" \
                 "1. Airtel Money\n" \
                 "2. Airtime\n" \
