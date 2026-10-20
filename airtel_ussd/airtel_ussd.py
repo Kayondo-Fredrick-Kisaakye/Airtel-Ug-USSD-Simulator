@@ -705,3 +705,27 @@ elif choice == "10":
         "*. Back\n"
         "#. Home\n"
     )
+    sub_1 = input("SELECT: ")
+    if sub_1 == "1":
+        print("YOUR BALANCE\n")
+        print(
+            f"Your account Balance is UGX {user_info['airtime_acc']}, Dail *100# to buy a bundle."
+        )
+    elif sub_1 == "2":
+        print("PUK")
+    elif sub_1 == "3":
+        print("YOUR NUMBER")
+    elif sub_1 == "4":
+        print("BEERAKO")
+    elif sub_1 == "5":
+        print("BLOCK STOLEN")
+    elif sub_1 == "6":
+        print("ME2U(AIRTIME)")
+    elif sub_1 == "7":
+        print("ENABLE DND")
+    elif sub_1 == "8":
+        print("CALL ME BACK")
+    elif sub_1 == "9":
+        print("AUTO-RENEWAL")
+    elif sub_1 == "10":
+        print("AGRICULTURE")
