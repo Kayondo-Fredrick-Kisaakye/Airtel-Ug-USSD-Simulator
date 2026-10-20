@@ -10,6 +10,8 @@ user_info = {
     "first_name": "Musinguzi",
     "second_name": "Vicent",
     "saved_pin": "1234",
+    "puk": 0000,
+    "phone_number": "0750251439",
     "airtel_money_acc": {
         "total_balance": 50000,
         "beerako_debt": 200,
@@ -19,7 +21,12 @@ user_info = {
     },
 }
 
+first_name = user_info["first_name"]
+second_name = user_info["second_name"]
+puk = user_info["puk"]
+phone_number = user_info["phone_number"]
 saved_pin = user_info["saved_pin"]
+
 thank_part = "Thank you for subscribing to Airtel services"
 invalid_input_msg = "Woops! Invalid Input"
 
@@ -712,7 +719,12 @@ elif choice == "10":
             f"Your account Balance is UGX {user_info['airtime_acc']}, Dail *100# to buy a bundle."
         )
     elif sub_1 == "2":
-        print("PUK")
+        print("PUK\n")
+        input("ENTER PHONE NUMBER: ")
+        if len(phone_number) != 10 or phone_number.isdigit():
+            print("Invalid Number, check again.")
+            sys.exit()
+
     elif sub_1 == "3":
         print("YOUR NUMBER")
     elif sub_1 == "4":
