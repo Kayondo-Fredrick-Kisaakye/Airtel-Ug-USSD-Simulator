@@ -722,4 +722,4 @@ elif choice == "2": #DATA/DEVICES
     "9. TV/Music\n" \
     "10. Learn From Home\n" \
     "*. Back\n" \
-    "#. Home\n")                       # rememer to add * and # logic
+    "#. Home\n")                       # rememer to add * and # logicVC   
