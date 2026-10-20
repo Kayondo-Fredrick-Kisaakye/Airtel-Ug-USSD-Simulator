@@ -6,26 +6,43 @@ print("Subsscribe to our services | Pay bills and more")
 print("=================================================")
 print("\n\t\tDail *100# to start")
 
-user_info = {
-    "first_name": "Musinguzi",
-    "second_name": "Vicent",
-    "saved_pin": "1234",
-    "puk": 0000,
-    "phone_number": "0750251439",
-    "airtel_money_acc": {
-        "total_balance": 50000,
-        "beerako_debt": 200,
-    },
-    "airtime_acc": {
-        "total_balance": 3000,
+users = {
+    "0750251439": {
+        "personal_info": {
+            "first_name": "musinguzi",
+            "second_name": "vicent",
+            "nin": "CM12345678910X",
+            "birth_date": "2003-12-12",
+            "gender": "male",
+            "nationality": "ugandan",
+            "tribe": "munyakole",
+        },
+        "airtel_acc_info": {
+            "phone_number": "0750251439",
+            "puk": "0000",
+            "pin": "1234",
+            "alternate_number": "788",
+            "airtel_money_acc": {
+                "total_balance": 48000,
+                "daily_limit": 5000000,
+            },
+            "airtime_acc": {
+                "total_balance": 3500,
+            },
+            "beerako_loans": {
+                "beerako_total_loan_amount": 0,
+                "beerakoloan_balance": 0,
+                "partial_payed": 0,
+            },
+        },
     },
 }
 
-first_name = user_info["first_name"]
-second_name = user_info["second_name"]
-puk = user_info["puk"]
-phone_number = user_info["phone_number"]
-saved_pin = user_info["saved_pin"]
+first_name = users["0750251439"]["personal_info"]["first_name"]
+second_name = users["0750251439"]["personal_info"]["second_name"]
+puk = users["0750251439"]["airtel_acc_info"]["puk"]
+phone_number = users["0750251439"]["airtel_acc_info"]["phone_number"]
+pin = users["0750251439"]["airtel_acc_info"]["pin"]
 
 thank_part = "Thank you for subscribing to Airtel services"
 invalid_input_msg = "Woops! Invalid Input"
