@@ -770,18 +770,116 @@ elif choice == "10":
             "*. Back\n"
             "#. Home\n"
         )
+        sub_2 = input("SELECT: ")
+        if sub_2 == "1":
+            print(f"Your number is {phone_number}.")
+        elif sub_2 == "2":
+            print(
+                "REGISTRATION STATUS\n"
+                "1. Check Registration Status\n"
+                "2. Enter Registration Details\n"
+            )
+        elif sub_2 == "3":
+            print(
+                f"Your account balance is {users['0750251439']['airtel_acc_info']['airtime_acc']['total_balance']}"
+            )
+        elif sub_2 == "4":
+            print(
+                "WELCOME TO AIRTEL\n"
+                "1. Missed Call Alert\n"
+                "2. Voice Mail\n"
+                "*. Back\n"
+                "#. Home\n"
+            )
+        elif sub_2 == "5":
+            print(
+                "1. Add your Family and Friends\n"
+                "2. Check Friends and Family number\n"
+                "3. Change Family and Friends number\n"
+                "4. Opt Out\n"
+                "*. Back\n"
+                "#. Home\n"
+            )
+        elif sub_2 == "6":
+            print(
+                "Are you happy with AIRTEL?\n"
+                "Please Select\n"
+                "1. YES\n"
+                "2. NO\n"
+                "*. Back\n"
+                "#. Home\n"
+            )
+        elif sub_2 == "7":
+            print(
+                f"Your number is {phone_number}, take a screenshot or write it somewhere."
+            )
 
     elif sub_1 == "4":
-        print("BEERAKO")
+        print(
+            "BEERAKO\n"
+            "1. Airtime Beerako\n"
+            "2. Data Beerako\n"
+            "3. Voice Beerako\n"
+            "*. Back\n"
+            "#. Home\n"
+        )
+
     elif sub_1 == "5":
-        print("BLOCK STOLEN")
+        print("BLOCK STOLEN\nPlease enter LOST/STOLEN number:\n*. Back\n#. Home\n")
+        entered_lost_stolen_number = ""
+
     elif sub_1 == "6":
-        print("ME2U(AIRTIME)")
+        print("ME2U(AIRTIME) Enter the amount\n*. Back\n#. Home\n")
+        entered_me2u_amount = int(input("ENTER AMOUNT: "))
+
     elif sub_1 == "7":
-        print("ENABLE DND")
+        print(
+            "ENABLE DND\n"
+            "1. Promotional Messages\n"
+            "2. End of Call Alert\n"
+            "3. Stop All SMS\n"
+            "4. Allow All SMS\n"
+            "5. More info\n"
+            "*. Back\n"
+            "#. Home\n"
+        )
+
     elif sub_1 == "8":
-        print("CALL ME BACK")
+        print("CALL ME BACK (Enter Number)\n")
+        enetered_call_me_back_number = input("ENTER NUMBER: ")
+
     elif sub_1 == "9":
-        print("AUTO-RENEWAL")
+        print(
+            "AUTO-RENEWAL\n"
+            "MANAGE AUTO-RENEWAL\n"
+            "1. Airtime\n"
+            "2. Airtel Money\n"
+            "3. Terms and Conditions\n"
+            "*. Back\n"
+            "#. Home\n"
+        )
     elif sub_1 == "10":
-        print("AGRICULTURE")
+        print(
+            "AGRICULTURE\n"
+            "Choose preferred channel to get\n"
+            "Agricultural Tips\n"
+            "1. Not using a smartphone\n"
+            "2. Using a smartphone\n"
+            "*. Back\n"
+            "#. Home\n"
+        )
+        sub_2 = input("SELECT: ")
+        if sub_2 == "1":
+            print("External Application Down")
+        elif sub_2 == "2":
+            print(
+                "1. Download EzyAgric Farmer App on Google Playstore\n"
+                "2. Activate 500Mb valid for 30 Days\n"
+                "*. Back\n"
+                "#. Home\n"
+            )
+            sub_3 = input("SELECT: ")
+            if sub_3 == "1":
+                print("Invalid (empty) response.")
+            elif sub_3 == "2":
+                print("Your request was successfully processed.")
