@@ -34,6 +34,9 @@ users = {
                 "beerakoloan_balance": 0,
                 "partial_payed": 0,
             },
+            "subscriptions": {
+                "autorenewal": "active",
+            },
         },
     },
 }
@@ -46,6 +49,9 @@ second_name = user_info["personal_info"]["second_name"]
 puk = user_info["airtel_acc_info"]["puk"]
 phone_number = user_info["airtel_acc_info"]["phone_number"]
 pin = user_info["airtel_acc_info"]["pin"]
+
+subscription = user_info["airtel_acc_info"]["subscriptions"].keys()
+subscriptions = users["0750251439"]["airtel_acc_info"]["subscriptions"]
 
 thank_part = "Thank you for subscribing to Airtel services"
 invalid_input_msg = "Woops! Invalid Input"
@@ -860,7 +866,8 @@ elif choice == "10":
         )
         sub_2 = input("SELECT: ")
         if sub_2 == "1":
-            print()  # ithink this has sth to do with loopind   through the dicts
+            if subscription in subscriptions["autorenewal"].values() == "active":
+                print("Active")
         elif sub_2 == "2":
             print()
         elif sub_2 == "3":
