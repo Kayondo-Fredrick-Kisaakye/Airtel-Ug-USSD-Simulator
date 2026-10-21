@@ -1,0 +1,70 @@
+Airtel USSD variable mapping changes
+====================================
+
+The user data is nested in this structure:
+
+users[number]
+  personal_info
+    first_name
+    second_name
+  airtel_acc_info
+    phone_number
+    puk
+    pin
+    airtel_money_acc
+      total_balance
+    airtime_acc
+      total_balance
+
+Changes applied in airtel_ussd/airtel_ussd.py
+----------------------------------------------
+
+1. PIN lookup
+   Before: user_info["pin"]
+   After:  user_info["airtel_acc_info"]["pin"]
+   Reason: The PIN is stored inside airtel_acc_info.
+   Code comment: "Match the PIN against the nested Airtel account data."
+
+2. Airtel Money balance lookup
+   Before: user_info["airtel_money_acc"]["total_balance"]
+   After:  user_info["airtel_acc_info"]["airtel_money_acc"]["total_balance"]
+   Reason: airtel_money_acc is inside airtel_acc_info.
+
+3. Customer name lookup
+   Before: user_info["first_name"] and user_info["second_name"]
+   After:  user_info["personal_info"]["first_name"] and
+           user_info["personal_info"]["second_name"]
+   Reason: Names are stored inside personal_info.
+
+4. Airtel Money balance update
+   Before: user_info["airtel_money_acc"]["total_balace"]
+   After:  user_info["airtel_acc_info"]["airtel_money_acc"]["total_balance"]
+   Reason: The old path was missing airtel_acc_info and had the typo total_balace.
+   Code comment: "Update the same nested balance key that was read above."
+
+5. Airtel Money balance display
+   The success message now reads the corrected nested total_balance key.
+
+6. Self Help balance display
+   The displayed airtime balance now uses:
+   user_info["airtel_acc_info"]["airtime_acc"]["total_balance"]
+   Code comment: "Read the displayed balance from the same nested airtime account data."
+
+7. PIN validation
+   One branch had the condition pin.isdigit(), which rejected valid numeric PINs.
+   It now uses not pin.isdigit(), matching the other PIN validation branches.
+   Code comment: "Reject a PIN unless it is exactly four numeric digits."
+
+8. PUK phone-number validation
+   The entered number is now stored in entered_phone_number and validated directly.
+   The code also compares it with the saved phone_number before showing the PUK.
+   Code comment: "Validate the entered number, then compare it with the saved account number."
+
+Validation performed
+--------------------
+
+Command:
+python3 -m py_compile airtel_ussd/airtel_ussd.py
+
+A scripted flow for *100# -> 0 -> 1 -> 1 -> 1 with PIN 1234 completed successfully.
+The Airtel Money balance changed from 48000 to 47000.

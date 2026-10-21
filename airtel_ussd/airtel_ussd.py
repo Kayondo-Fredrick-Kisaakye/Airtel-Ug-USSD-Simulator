@@ -113,28 +113,33 @@ if choice == "0":
                     print("Invalid PIN! Must be 4 digits.")
                     sys.exit()
 
-                # 2. CHECK THE SAVED PIN FROM DICT user_ifno
-                elif pin != user_info["pin"]:
+                # 2. Match the PIN against the nested Airtel account data.
+                elif pin != user_info["airtel_acc_info"]["pin"]:
                     print("Wrong PIN! Try again.")
                     sys.exit()
 
                 # 3. CHECK THE BALANCE
                 else:
                     price = 1000
-                    balance = user_info["airtel_money_acc"]["total_balance"]
+                    balance = user_info["airtel_acc_info"]["airtel_money_acc"][
+                        "total_balance"
+                    ]
 
                     if balance < price:
                         print(
-                            f"Dear {user_info['first_name']} {user_info['second_name']}, you have insufficient funds. Your balance is {balance}/-"
+                            f"Dear {user_info['personal_info']['first_name']} {user_info['personal_info']['second_name']}, you have insufficient funds. Your balance is {balance}/-"
                         )
                     else:
                         # WE DEDUCT AND SHOW SUCCESS MESSAGE
-                        user_info["airtel_money_acc"]["total_balace"] = balance - price
+                        # Update the same nested balance key that was read above.
+                        user_info["airtel_acc_info"]["airtel_money_acc"][
+                            "total_balance"
+                        ] = balance - price
                         print(
                             f"SUCCESS! {thank_part}, {price}/- has been deducted and you've subscribed to 1,000/- 60Mins + 5Mbs + 5SMS"
                         )
                         print(
-                            f"New Airtel Money Balance: {user_info['airtel_money_acc']['total_balance']}/-"
+                            f"New Airtel Money Balance: {user_info['airtel_acc_info']['airtel_money_acc']['total_balance']}/-"
                         )
 
             elif sub_3 == "2":  # 2. AIRTIME
@@ -430,7 +435,8 @@ elif choice == "1":
                     print("AIRTEL MONEY\n")
                     pin = input("ENTER PIN: ")
                     # PIN LENGTH
-                    if len(pin) != 4 or pin.isdigit():
+                    # Reject a PIN unless it is exactly four numeric digits.
+                    if len(pin) != 4 or not pin.isdigit():
                         print("Invalid PIN! Must be 4 digits.")
                     else:
                         print(f"SUCCESS! {thank_part}, You have subscribed.")
@@ -735,18 +741,36 @@ elif choice == "10":
     sub_1 = input("SELECT: ")
     if sub_1 == "1":
         print("YOUR BALANCE\n")
+        # Read the displayed balance from the same nested airtime account data.
         print(
-            f"Your account Balance is UGX {user_info['airtime_acc']}, Dail *100# to buy a bundle."
+            f"Your account Balance is UGX {user_info['airtel_acc_info']['airtime_acc']['total_balance']}, Dail *100# to buy a bundle."
         )
     elif sub_1 == "2":
         print("PUK\n")
-        input("ENTER PHONE NUMBER: ")
-        if len(phone_number) != 10 or phone_number.isdigit():
+        entered_phone_number = input("ENTER PHONE NUMBER: ")
+        # Validate the entered number, then compare it with the saved account number.
+        if len(entered_phone_number) != 10 or not entered_phone_number.isdigit():
             print("Invalid Number, check again.")
             sys.exit()
+        elif entered_phone_number != phone_number:
+            print("Number not found, check again.")
+        else:
+            print(f"Your PUK is {puk}")
 
     elif sub_1 == "3":
-        print("YOUR NUMBER")
+        print(
+            "YOUR NUMBER\n"
+            "1. My Number\n"
+            "2. Registration Status\n"
+            "3. My Account Balance\n"
+            "4. Missed Call Alert/Voice Mail\n"
+            "5. Friends and Family\n"
+            "6. Are you Happy with Airtel\n"
+            "7. Save Your Number\n"
+            "*. Back\n"
+            "#. Home\n"
+        )
+
     elif sub_1 == "4":
         print("BEERAKO")
     elif sub_1 == "5":
