@@ -858,6 +858,14 @@ elif choice == "10":
             "*. Back\n"
             "#. Home\n"
         )
+        sub_2 = input("SELECT: ")
+        if sub_2 == "1":
+            print()  # ithink this has sth to do with loopind   through the dicts
+        elif sub_2 == "2":
+            print()
+        elif sub_2 == "3":
+            print()
+
     elif sub_1 == "10":
         print(
             "AGRICULTURE\n"
