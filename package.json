@@ -1,0 +1,6 @@
+{
+    "name": "airtel-ug-ussd-simulator",
+    "version": "1.0.0",
+    "public": true,
+    "description": "simulates the Airtel Uganda *100# USSD Menus and process of accessing their services and more."
+}
